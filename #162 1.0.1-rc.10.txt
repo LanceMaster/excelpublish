@@ -1,0 +1,411 @@
+Started by user PMPLANNER
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /appdata/siemens/apps/jenkins/lib/jenkins/jobs/pm-planner_qa_exec/jobs/pm-planner-qa-app-build/workspace
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] timeout
+[2026-08-25T01:28:22.832Z] Timeout set to expire in 30 min
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Remote git Checkout)
+[Pipeline] withCredentials
+[2026-08-25T01:28:22.905Z] Masking supported pattern matches of $GITHUB_PAT
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+[2026-08-25T01:28:23.227Z] + echo '--- Starting checkout process on deploy server ---'
+[2026-08-25T01:28:23.228Z] --- Starting checkout process on deploy server ---
+[2026-08-25T01:28:23.228Z] + echo '--- cleaning up workspace: /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir ---'
+[2026-08-25T01:28:23.228Z] --- cleaning up workspace: /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir ---
+[2026-08-25T01:28:23.228Z] + sudo mkdir -p /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir
+[2026-08-25T01:28:23.228Z] + sudo chown -R mxadmin:mendix /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir
+[2026-08-25T01:28:24.138Z] + cd /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir
+[2026-08-25T01:28:24.138Z] + sudo rm -rf mendix-iris-qa
+[2026-08-25T01:28:24.389Z] + sudo rm -rf mendixIrisQA
+[2026-08-25T01:28:24.389Z] + echo '--- Cloning branch '\''release'\'' into '\''mendix-iris-qa'\'' directory ---'
+[2026-08-25T01:28:24.389Z] --- Cloning branch 'release' into 'mendix-iris-qa' directory ---
+[2026-08-25T01:28:24.389Z] + echo 'Git 저장소에서 코드 체크아웃'
+[2026-08-25T01:28:24.389Z] Git 저장소에서 코드 체크아웃
+[2026-08-25T01:28:24.389Z] + sudo git clone --depth 1 --branch release https://****@github.samsungds.net/DS-N-PLM/iris-mx-app.git /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendix-iris-qa
+[2026-08-25T01:28:24.639Z] Cloning into '/appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendix-iris-qa'...
+[2026-08-25T01:28:42.600Z] Updating files:  96% (7397/7669)[2026-08-25T01:28:42.600Z] Updating files:  97% (7439/7669)[2026-08-25T01:28:42.600Z] Updating files:  98% (7516/7669)[2026-08-25T01:28:42.600Z] Updating files:  99% (7593/7669)[2026-08-25T01:28:42.600Z] Updating files:  99% (7657/7669)[2026-08-25T01:28:42.600Z] Updating files: 100% (7669/7669)[2026-08-25T01:28:42.600Z] Updating files: 100% (7669/7669), done.
+[2026-08-25T01:28:42.600Z] + cd mendix-iris-qa
+[2026-08-25T01:28:42.600Z] + echo '--- Source commit ---'
+[2026-08-25T01:28:42.600Z] --- Source commit ---
+[2026-08-25T01:28:42.600Z] + git log -1 --pretty=format:%H%n%an%n%ad%n%s
+[2026-08-25T01:28:42.600Z] 17d188b56b75a51590f06f80db31135b393a9f54
+[2026-08-25T01:28:42.600Z] dsjk27942.id
+[2026-08-25T01:28:42.600Z] Mon Aug 24 08:54:43 2026 +0000
+[2026-08-25T01:28:42.600Z] #Description+ echo ''
+[2026-08-25T01:28:42.600Z] 
+[2026-08-25T01:28:42.600Z] + echo ---------------------
+[2026-08-25T01:28:42.600Z] ---------------------
+[2026-08-25T01:28:42.600Z] + sudo git rev-parse --ls-shallow-repository
+[2026-08-25T01:28:42.600Z] + sudo git fetch https://****@github.samsungds.net/DS-N-PLM/iris-mx-app.git --unshallow
+[2026-08-25T01:30:03.843Z] From https://github.samsungds.net/DS-N-PLM/iris-mx-app
+[2026-08-25T01:30:03.843Z]  * branch                HEAD       -> FETCH_HEAD
+[2026-08-25T01:30:03.843Z] + sudo git fetch https://****@github.samsungds.net/DS-N-PLM/iris-mx-app.git --tags --force
+[2026-08-25T01:30:03.843Z] From https://github.samsungds.net/DS-N-PLM/iris-mx-app
+[2026-08-25T01:30:03.843Z]  * branch                HEAD            -> FETCH_HEAD
+[2026-08-25T01:30:03.843Z]  * [new tag]             1.0.0.56db09dc  -> 1.0.0.56db09dc
+[2026-08-25T01:30:03.843Z]  * [new tag]             1.0.0.8ed15c0e  -> 1.0.0.8ed15c0e
+[2026-08-25T01:30:03.843Z]  * [new tag]             1.0.0.b683a844  -> 1.0.0.b683a844
+[2026-08-25T01:30:03.843Z]  * [new tag]             1.0.1-rc.5      -> 1.0.1-rc.5
+[2026-08-25T01:30:03.843Z]  * [new tag]             1.0.1-rc.6      -> 1.0.1-rc.6
+[2026-08-25T01:30:03.843Z]  * [new tag]             1.0.1-rc.7      -> 1.0.1-rc.7
+[2026-08-25T01:30:03.843Z]  * [new tag]             QADC-1.0.1-rc.5 -> QADC-1.0.1-rc.5
+[2026-08-25T01:30:03.843Z]  * [new tag]             QADC-1.0.1-rc.6 -> QADC-1.0.1-rc.6
+[2026-08-25T01:30:03.844Z]  * [new tag]             QADC-1.0.1-rc.7 -> QADC-1.0.1-rc.7
+[2026-08-25T01:30:03.844Z]  * [new tag]             QADC-1.0.1-rc.8 -> QADC-1.0.1-rc.8
+[2026-08-25T01:30:03.844Z]  * [new tag]             QADC-1.0.1-rc.9 -> QADC-1.0.1-rc.9
+[2026-08-25T01:30:03.844Z] + echo '--- deploy server checkout finished successfully ---'
+[2026-08-25T01:30:03.844Z] --- deploy server checkout finished successfully ---
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Resolve Version)
+[Pipeline] withCredentials
+[2026-08-25T01:30:03.980Z] Masking supported pattern matches of $GITHUB_PAT
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+[2026-08-25T01:30:04.282Z] + git -C /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendix-iris-qa for-each-ref --sort=-creatordate '--format=%(refname:short)' refs/tags
+[2026-08-25T01:30:04.282Z] + grep -vE '\-rc\.'
+[2026-08-25T01:30:04.282Z] + grep -oE '^[0-9]+\.[0-9]+\.[0-9]+'
+[2026-08-25T01:30:04.282Z] + head -n 1
+[Pipeline] echo
+[2026-08-25T01:30:04.299Z] ▶ 직전 prod 태그: 1.0.0
+[Pipeline] echo
+[2026-08-25T01:30:04.308Z] ▶ VERSION_BUMP=patch (기본값) → Patch 증가
+[Pipeline] sh
+[2026-08-25T01:30:04.574Z] + git -C /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendix-iris-qa for-each-ref --sort=-creatordate '--format=%(refname:short)' 'refs/tags/1.0.1-rc.*'
+[2026-08-25T01:30:04.574Z] + head -n 1
+[Pipeline] echo
+[2026-08-25T01:30:04.602Z] ▶ 직전 rc 번호: 9
+[Pipeline] echo
+[2026-08-25T01:30:04.611Z] ▶ 빌드 버전: 1.0.1-rc.10  / GitHub: 1.0.1-rc.10
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Package buildpack / Image Build)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+[2026-08-25T01:30:05.076Z] + echo '--- Starting build on deploy server ---'
+[2026-08-25T01:30:05.076Z] --- Starting build on deploy server ---
+[2026-08-25T01:30:05.076Z] + cd /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir
+[2026-08-25T01:30:05.076Z] + sudo mkdir -p /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendixIrisQA
+[2026-08-25T01:30:05.076Z] + sudo chown -R mxadmin:mendix /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendixIrisQA
+[2026-08-25T01:30:05.076Z] + echo '--- Downloading buildpack and building MDA ---'
+[2026-08-25T01:30:05.076Z] --- Downloading buildpack and building MDA ---
+[2026-08-25T01:30:05.076Z] + cd /appdata/siemens/workspace/mx/mx_iris/docker-mendix-buildpack
+[2026-08-25T01:30:05.076Z] + sudo ./build.py --artifacts-repository 10.173.129.72:5001/mendix-buildpack --source /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendix-iris-qa --destination /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendixIrisQA build-mda-dir
+[2026-08-25T01:30:05.326Z] INFO:docker-stdout:mxbuild-10.24.9.81004-dotnet-x86_64: Pulling from mendix-buildpack
+[2026-08-25T01:30:05.326Z] INFO:docker-stdout:Digest: sha256:3f5714e269abe0fea8c6932a44384f22eb9603eab847642b304e84ee6bc39c6d
+[2026-08-25T01:30:05.326Z] INFO:docker-stdout:Status: Image is up to date for 10.173.129.72:5001/mendix-buildpack:mxbuild-10.24.9.81004-dotnet-x86_64
+[2026-08-25T01:30:05.326Z] INFO:docker-stdout:10.173.129.72:5001/mendix-buildpack:mxbuild-10.24.9.81004-dotnet-x86_64
+[2026-08-25T01:30:05.326Z] INFO:docker-stdout:9cbc217a23837e1936d42296a2bffa4ce1113a552cf5e1879186ec1301d85013
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:Detected Java 21
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:   __  __      ____        _ _     _
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:  |  \/  |    |  _ \      (_) |   | |
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:  | \  / |_  _| |_) |_   _ _| | __| |
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:  | |\/| \ \/ /  _ <| | | | | |/ _` |
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:  | |  | |>  <| |_) | |_| | | | (_| |
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:  |_|  |_/_/\_\____/ \__,_|_|_|\__,_|
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:   v10.24.9.81004
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:Starting build for Mendix Project file: /workdir/project/AxWebApp.mpr
+[2026-08-25T01:30:51.834Z] INFO:docker-stdout:Using the following options:
+[2026-08-25T01:31:18.237Z] INFO:docker-stdout: * Build target: Package
+[2026-08-25T01:31:18.237Z] INFO:docker-stdout: * Deployment package file: /workdir/output.mda
+[2026-08-25T01:31:18.237Z] INFO:docker-stdout: * Model version: 17d188b56b75a51590f06f80db31135b393a9f54
+[2026-08-25T01:31:18.237Z] INFO:docker-stdout:Reading project file...
+[2026-08-25T01:31:18.237Z] INFO:docker-stdout:Building and packaging project...
+[2026-08-25T01:31:18.237Z] INFO:docker-stdout:Executing step 'Synchronize with file system'
+[2026-08-25T01:31:18.237Z] INFO:docker-stdout:Synchronizing with file system...
+[2026-08-25T01:31:23.433Z] INFO:docker-stdout:Executing step 'Initialize'
+[2026-08-25T01:31:23.433Z] INFO:docker-stdout:Preparing deployment...
+[2026-08-25T01:31:23.433Z] INFO:docker-stdout:Executing step 'Check prerequisites'
+[2026-08-25T01:31:23.433Z] INFO:docker-stdout:Checking for errors...
+[2026-08-25T01:32:19.486Z] INFO:docker-stdout:Executing step 'Clean deployment directory'
+[2026-08-25T01:32:19.486Z] INFO:docker-stdout:Cleaning deployment directory...
+[2026-08-25T01:32:19.737Z] INFO:docker-stdout:Cleaning ml deployment directory...
+[2026-08-25T01:32:19.737Z] INFO:docker-stdout:Cleaning web deployment directory...
+[2026-08-25T01:32:19.737Z] INFO:docker-stdout:Cleaning source web deployment directory...
+[2026-08-25T01:32:19.737Z] INFO:docker-stdout:Executing step 'Perform model transformations'
+[2026-08-25T01:32:19.737Z] INFO:docker-stdout:Applying model transformations...
+[2026-08-25T01:32:24.931Z] INFO:docker-stdout:Executing step 'Generate deployment files'
+[2026-08-25T01:32:24.931Z] INFO:docker-stdout:Writing files...
+[2026-08-25T01:32:31.412Z] INFO:docker-stdout:Executing step 'Prepare deployment'
+[2026-08-25T01:32:31.412Z] INFO:docker-stdout:Generating styles for icons
+[2026-08-25T01:32:31.412Z] INFO:docker-stdout:Cleaning web deployment directory...
+[2026-08-25T01:32:31.412Z] INFO:docker-stdout:Executing step 'Build deployment structure'
+[2026-08-25T01:32:31.412Z] INFO:docker-stdout:Exporting ml models to ml deployment directory...
+[2026-08-25T01:32:31.412Z] INFO:docker-stdout:Compiling theme files...
+[2026-08-25T01:32:31.412Z] INFO:docker-stdout:Exporting a theme...
+[2026-08-25T01:32:31.963Z] INFO:docker-stdout:Generating font files for icons
+[2026-08-25T01:32:31.963Z] INFO:docker-stdout:Exporting microflows model...
+[2026-08-25T01:32:33.309Z] INFO:docker-stdout:Exporting pluggable web widgets...
+[2026-08-25T01:32:35.170Z] INFO:docker-stdout:Exporting pages...
+[2026-08-25T01:32:43.197Z] INFO:docker-stdout:Executing step 'Save model to deployment directory'
+[2026-08-25T01:32:43.197Z] INFO:docker-stdout:Saving model to deployment directory...
+[2026-08-25T01:32:45.059Z] INFO:docker-stdout:Executing step 'Finalize deployment structure'
+[2026-08-25T01:32:45.059Z] INFO:docker-stdout:Post-processing generation results...
+[2026-08-25T01:32:45.059Z] INFO:docker-stdout:Executing step 'Bundle application'
+[2026-08-25T01:32:45.059Z] INFO:docker-stdout:Compiling Java...
+[2026-08-25T01:35:51.310Z] INFO:docker-stdout:Bundling the app...
+[2026-08-25T01:37:27.556Z] INFO:docker-stdout:Cleaning up source web deployment directory...
+[2026-08-25T01:37:27.556Z] INFO:docker-stdout:Executing step 'Compress deployment package'
+[2026-08-25T01:37:27.556Z] INFO:docker-stdout:Creating deployment package...
+[2026-08-25T01:37:39.653Z] INFO:docker-stdout:Executing step 'Clean up'
+[2026-08-25T01:37:39.653Z] INFO:docker-stdout:Cleaning up...
+[2026-08-25T01:37:40.564Z] INFO:docker-stdout:BUILD SUCCEEDED
+[2026-08-25T01:37:44.687Z] INFO:docker-stdout:9cbc217a23837e1936d42296a2bffa4ce1113a552cf5e1879186ec1301d85013
+[2026-08-25T01:37:44.687Z] + echo '--- Building Docker Image ---'
+[2026-08-25T01:37:44.687Z] --- Building Docker Image ---
+[2026-08-25T01:37:44.687Z] + docker build --label project=mendix-iris-qa --build-arg ROOTFS_IMAGE=mendix-rootfs:app --build-arg BUILDER_ROOTFS_IMAGE=mendix-rootfs:builder --build-arg EXCLUDE_LOGFILTER=true --build-arg BLOBSTORE=http://10.173.129.72:28080 --build-arg BUILDPACK_XTRACE=true -t mendix-iris-qa:1.0.1-rc.10 -f /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendixIrisQA/Dockerfile /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendixIrisQA
+[2026-08-25T01:37:44.687Z] #0 building with "default" instance using docker driver
+[2026-08-25T01:37:44.687Z] 
+[2026-08-25T01:37:44.687Z] #1 [internal] load .dockerignore
+[2026-08-25T01:37:44.687Z] #1 transferring context: 2B done
+[2026-08-25T01:37:44.687Z] #1 DONE 0.0s
+[2026-08-25T01:37:44.687Z] 
+[2026-08-25T01:37:44.687Z] #2 [internal] load build definition from Dockerfile
+[2026-08-25T01:37:44.687Z] #2 transferring dockerfile: 2.81kB done
+[2026-08-25T01:37:44.687Z] #2 DONE 0.0s
+[2026-08-25T01:37:44.687Z] 
+[2026-08-25T01:37:44.687Z] #3 [internal] load metadata for docker.io/library/mendix-rootfs:app
+[2026-08-25T01:37:44.687Z] #3 DONE 0.0s
+[2026-08-25T01:37:44.687Z] 
+[2026-08-25T01:37:44.687Z] #4 [internal] load metadata for docker.io/library/mendix-rootfs:builder
+[2026-08-25T01:37:44.687Z] #4 DONE 0.0s
+[2026-08-25T01:37:44.687Z] 
+[2026-08-25T01:37:44.687Z] #5 [builder 1/4] FROM docker.io/library/mendix-rootfs:builder
+[2026-08-25T01:37:44.687Z] #5 DONE 0.0s
+[2026-08-25T01:37:44.687Z] 
+[2026-08-25T01:37:44.687Z] #6 [stage-1 1/4] FROM docker.io/library/mendix-rootfs:app
+[2026-08-25T01:37:44.687Z] #6 DONE 0.0s
+[2026-08-25T01:37:44.687Z] 
+[2026-08-25T01:37:44.687Z] #7 [internal] load build context
+[2026-08-25T01:37:46.552Z] #7 transferring context: 364.84MB 1.7s done
+[2026-08-25T01:37:46.552Z] #7 DONE 1.7s
+[2026-08-25T01:37:46.552Z] 
+[2026-08-25T01:37:46.552Z] #5 [builder 1/4] FROM docker.io/library/mendix-rootfs:builder
+[2026-08-25T01:37:46.552Z] #5 CACHED
+[2026-08-25T01:37:46.552Z] 
+[2026-08-25T01:37:46.552Z] #8 [builder 2/4] COPY project /opt/mendix/build
+[2026-08-25T01:37:47.103Z] #8 DONE 0.6s
+[2026-08-25T01:37:47.354Z] 
+[2026-08-25T01:37:47.354Z] #9 [builder 3/4] COPY scripts/startup.py scripts/vcap_application.json /opt/mendix/build/
+[2026-08-25T01:37:47.354Z] #9 DONE 0.1s
+[2026-08-25T01:37:47.354Z] 
+[2026-08-25T01:37:47.354Z] #10 [builder 4/4] RUN mkdir -p /tmp/buildcache/bust /tmp/cf-deps /var/mendix/build /var/mendix/build/.local &&    chmod +rx /opt/mendix/buildpack/compilation.py /opt/mendix/buildpack/buildpack/stage.py /opt/mendix/build/startup.py &&    cd /opt/mendix/buildpack &&    ./compilation.py /opt/mendix/build /tmp/buildcache /tmp/cf-deps 0 &&    rm -fr /tmp/buildcache /tmp/javasdk /tmp/opt /tmp/downloads /opt/mendix/buildpack/compilation.py /var/mendix &&    ln -s /opt/mendix/.java /opt/mendix/build &&    chown -R 1001:0 /opt/mendix &&    chmod -R g=u /opt/mendix
+[2026-08-25T01:37:47.904Z] #10 0.736 INFO: Mendix project compilation phase...
+[2026-08-25T01:37:48.455Z] #10 1.096 INFO: get_java_major_version : major_version - 21
+[2026-08-25T01:37:48.455Z] #10 1.096 INFO: Preflight check on Mendix version [10.24.9.81004] and stack [cflinuxfs4]...
+[2026-08-25T01:37:48.455Z] #10 1.096 INFO: Mendix [10.24] is not maintained. Please use a medium- or long-term supported Mendix version to easily receive fixes (https://docs.mendix.com/releasenotes/studio-pro/lts-mts).
+[2026-08-25T01:37:48.455Z] #10 1.096 INFO: Preflight check completed
+[2026-08-25T01:37:49.366Z] #10 2.151 INFO: checking is micrometer metrics enabled
+[2026-08-25T01:37:49.366Z] #10 2.151 INFO: checking is micrometer metrics enabled
+[2026-08-25T01:37:49.366Z] #10 2.151 INFO: Usage metering is NOT enabled
+[2026-08-25T01:37:53.488Z] #10 6.227 INFO: Mendix Cloud Foundry Buildpack staging completed
+[2026-08-25T01:37:53.488Z] #10 6.227 INFO: Removing mendix-logfilter executable
+[2026-08-25T01:37:58.682Z] #10 DONE 10.5s
+[2026-08-25T01:38:02.804Z] 
+[2026-08-25T01:38:02.804Z] #11 [stage-1 2/4] RUN if [ ! -z "$DD_API_KEY" ] ; then    microdnf update -y &&     microdnf install -y ruby &&     microdnf clean all && rm -rf /var/cache/yum     ; fi
+[2026-08-25T01:38:02.804Z] #11 CACHED
+[2026-08-25T01:38:02.804Z] 
+[2026-08-25T01:38:02.804Z] #12 [stage-1 3/4] COPY --from=builder /opt/mendix /opt/mendix
+[2026-08-25T01:38:03.355Z] #12 DONE 0.7s
+[2026-08-25T01:38:03.605Z] 
+[2026-08-25T01:38:03.605Z] #13 [stage-1 4/4] WORKDIR /opt/mendix/build
+[2026-08-25T01:38:03.605Z] #13 DONE 0.1s
+[2026-08-25T01:38:03.605Z] 
+[2026-08-25T01:38:03.605Z] #14 exporting to image
+[2026-08-25T01:38:03.605Z] #14 exporting layers
+[2026-08-25T01:38:13.486Z] #14 exporting layers 8.9s done
+[2026-08-25T01:38:13.486Z] #14 writing image sha256:50f12df8c633746ed599e69ce983e838aeee51b56b91e37e5f4a1d50123e22c1 done
+[2026-08-25T01:38:13.486Z] #14 naming to docker.io/library/mendix-iris-qa:1.0.1-rc.10 done
+[2026-08-25T01:38:13.486Z] #14 DONE 8.9s
+[2026-08-25T01:38:13.486Z] + echo '--- Tagging, Pushing, and Cleaning up Docker Image ---'
+[2026-08-25T01:38:13.486Z] --- Tagging, Pushing, and Cleaning up Docker Image ---
+[2026-08-25T01:38:13.486Z] + docker tag mendix-iris-qa:1.0.1-rc.10 ptdeploylxw01:5001/iris/app/mendix-iris-qa:1.0.1-rc.10
+[2026-08-25T01:38:13.486Z] + docker push ptdeploylxw01:5001/iris/app/mendix-iris-qa:1.0.1-rc.10
+[2026-08-25T01:38:13.486Z] The push refers to repository [ptdeploylxw01:5001/iris/app/mendix-iris-qa]
+[2026-08-25T01:38:13.486Z] 5f70bf18a086: Preparing
+[2026-08-25T01:38:13.486Z] f5913030f5bf: Preparing
+[2026-08-25T01:38:13.486Z] 5f70bf18a086: Preparing
+[2026-08-25T01:38:13.486Z] 40d6cb5f80e8: Preparing
+[2026-08-25T01:38:13.486Z] 5386281e0205: Preparing
+[2026-08-25T01:38:13.486Z] 5eb5658f3f3f: Preparing
+[2026-08-25T01:38:13.486Z] 3ba332521bca: Preparing
+[2026-08-25T01:38:13.486Z] 246a177427d5: Preparing
+[2026-08-25T01:38:13.486Z] 4c1d585cffbd: Preparing
+[2026-08-25T01:38:13.486Z] 2be495b6f6a7: Preparing
+[2026-08-25T01:38:13.486Z] 9344370a0195: Preparing
+[2026-08-25T01:38:13.486Z] f4f838f0e5f5: Preparing
+[2026-08-25T01:38:13.486Z] 3ba332521bca: Waiting
+[2026-08-25T01:38:13.486Z] 246a177427d5: Waiting
+[2026-08-25T01:38:13.486Z] 4c1d585cffbd: Waiting
+[2026-08-25T01:38:13.486Z] 2be495b6f6a7: Waiting
+[2026-08-25T01:38:13.486Z] 9344370a0195: Waiting
+[2026-08-25T01:38:13.486Z] f4f838f0e5f5: Waiting
+[2026-08-25T01:38:13.486Z] 40d6cb5f80e8: Layer already exists
+[2026-08-25T01:38:13.486Z] 5f70bf18a086: Layer already exists
+[2026-08-25T01:38:13.486Z] 5386281e0205: Layer already exists
+[2026-08-25T01:38:13.486Z] 5eb5658f3f3f: Layer already exists
+[2026-08-25T01:38:13.486Z] 3ba332521bca: Layer already exists
+[2026-08-25T01:38:13.486Z] 2be495b6f6a7: Layer already exists
+[2026-08-25T01:38:13.486Z] 246a177427d5: Layer already exists
+[2026-08-25T01:38:13.486Z] 4c1d585cffbd: Layer already exists
+[2026-08-25T01:38:13.486Z] f4f838f0e5f5: Layer already exists
+[2026-08-25T01:38:13.486Z] 9344370a0195: Layer already exists
+[2026-08-25T01:38:52.047Z] f5913030f5bf: Pushed
+[2026-08-25T01:38:52.047Z] 1.0.1-rc.10: digest: sha256:c4f30590370aa7b57038a7f1008c98b09be11988f7cc1579c8953bc6b81a5ee4 size: 2819
+[2026-08-25T01:38:52.047Z] + docker images --quiet --filter=dangling=true
+[2026-08-25T01:38:52.047Z] + xargs --no-run-if-empty docker rmi
+[2026-08-25T01:38:52.047Z] + docker image prune -a -f --filter label=project=mendix-iris-qa
+[2026-08-25T01:38:52.047Z] Deleted Images:
+[2026-08-25T01:38:52.047Z] untagged: mendix-iris-qa:1.0.1-rc.10
+[2026-08-25T01:38:52.047Z] untagged: ptdeploylxw01:5001/iris/app/mendix-iris-qa:1.0.1-rc.10
+[2026-08-25T01:38:52.047Z] untagged: ptdeploylxw01:5001/iris/app/mendix-iris-qa@sha256:c4f30590370aa7b57038a7f1008c98b09be11988f7cc1579c8953bc6b81a5ee4
+[2026-08-25T01:38:52.047Z] deleted: sha256:50f12df8c633746ed599e69ce983e838aeee51b56b91e37e5f4a1d50123e22c1
+[2026-08-25T01:38:52.047Z] 
+[2026-08-25T01:38:52.047Z] Total reclaimed space: 0B
+[2026-08-25T01:38:52.047Z] + sudo rm -rf /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendixIrisQA
+[2026-08-25T01:38:52.047Z] + echo '--- deploy server build finished successfully ---'
+[2026-08-25T01:38:52.047Z] --- deploy server build finished successfully ---
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Remote Git Tag and Push)
+[Pipeline] withCredentials
+[2026-08-25T01:38:52.175Z] Masking supported pattern matches of $GITHUB_PAT
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+[2026-08-25T01:38:52.488Z] + echo '--- Starting Git Tagging process on deploy server ---'
+[2026-08-25T01:38:52.488Z] --- Starting Git Tagging process on deploy server ---
+[2026-08-25T01:38:52.488Z] + cd /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendix-iris-qa
+[2026-08-25T01:38:52.488Z] ++ git tag -l
+[2026-08-25T01:38:52.488Z] ++ grep '^1.0.1-rc.10$'
+[2026-08-25T01:38:52.488Z] ++ wc -l
+[2026-08-25T01:38:52.488Z] + '[' 0 -ne 0 ']'
+[2026-08-25T01:38:52.488Z] + sudo git config --global user.email pmp-jenkins@example.com
+[2026-08-25T01:38:52.488Z] + sudo git config --global user.name pmp-jenkins
+[2026-08-25T01:38:52.488Z] + echo 'Creating and pushing new tag: 1.0.1-rc.10'
+[2026-08-25T01:38:52.488Z] Creating and pushing new tag: 1.0.1-rc.10
+[2026-08-25T01:38:52.488Z] + sudo git tag -a 1.0.1-rc.10 -m 'CI build 1.0.1-rc.10 (#162)'
+[2026-08-25T01:38:52.488Z] + sudo git push https://****@github.samsungds.net/DS-N-PLM/iris-mx-app.git 1.0.1-rc.10
+[2026-08-25T01:38:53.038Z] To https://github.samsungds.net/DS-N-PLM/iris-mx-app.git
+[2026-08-25T01:38:53.038Z]  * [new tag]             1.0.1-rc.10 -> 1.0.1-rc.10
+[2026-08-25T01:38:53.038Z] + sudo git fetch https://****@github.samsungds.net/DS-N-PLM/iris-mx-app.git --prune --prune-tags
+[2026-08-25T01:38:53.289Z] + echo '--- deploy server Git Tagging process finished successfully ---'
+[2026-08-25T01:38:53.289Z] --- deploy server Git Tagging process finished successfully ---
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Cleanup Old rc Tags)
+[Pipeline] withCredentials
+[2026-08-25T01:38:53.426Z] Masking supported pattern matches of $GITHUB_PAT
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+[2026-08-25T01:38:53.730Z] + cd /appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendix-iris-qa
+[2026-08-25T01:38:53.730Z] + echo '▶ rc 태그 정리 (버전 라인별 최근 2개만 유지)'
+[2026-08-25T01:38:53.730Z] ▶ rc 태그 정리 (버전 라인별 최근 2개만 유지)
+[2026-08-25T01:38:53.730Z] + git for-each-ref '--format=%(refname:short)' refs/tags
+[2026-08-25T01:38:53.730Z] + grep -E '\-rc\.[0-9]+$'
+[2026-08-25T01:38:53.730Z] + sed -E 's/-rc\.[0-9]+$//'
+[2026-08-25T01:38:53.730Z] + sort -u
+[2026-08-25T01:38:53.730Z] + read -r base
+[2026-08-25T01:38:53.730Z] + '[' -z 1.0.1 ']'
+[2026-08-25T01:38:53.730Z] + git for-each-ref --sort=-creatordate '--format=%(refname:short)' 'refs/tags/1.0.1-rc.*'
+[2026-08-25T01:38:53.730Z] + tail -n +6
+[2026-08-25T01:38:53.730Z] + read -r old_tag
+[2026-08-25T01:38:53.730Z] + '[' -z 1.0.1-rc.5 ']'
+[2026-08-25T01:38:53.730Z] + echo '  - 삭제: 1.0.1-rc.5'
+[2026-08-25T01:38:53.730Z]   - 삭제: 1.0.1-rc.5
+[2026-08-25T01:38:53.730Z] + git tag -d 1.0.1-rc.5
+[2026-08-25T01:38:53.730Z] error: could not delete reference refs/tags/1.0.1-rc.5: Unable to create '/appdata/siemens/workspace/mx/mx_iris/qa/mxdeploy-dir/mendix-iris-qa/.git/packed-refs.lock': Permission denied
+[2026-08-25T01:38:53.730Z] + true
+[2026-08-25T01:38:53.730Z] + git push https://****@github.samsungds.net/DS-N-PLM/iris-mx-app.git :refs/tags/1.0.1-rc.5
+[2026-08-25T01:38:54.281Z] To https://github.samsungds.net/DS-N-PLM/iris-mx-app.git
+[2026-08-25T01:38:54.281Z]  - [deleted]             1.0.1-rc.5
+[2026-08-25T01:38:54.281Z] + read -r old_tag
+[2026-08-25T01:38:54.281Z] + read -r base
+[2026-08-25T01:38:54.281Z] + '[' -z QADC-1.0.1 ']'
+[2026-08-25T01:38:54.281Z] + git for-each-ref --sort=-creatordate '--format=%(refname:short)' 'refs/tags/QADC-1.0.1-rc.*'
+[2026-08-25T01:38:54.281Z] + tail -n +6
+[2026-08-25T01:38:54.281Z] + read -r old_tag
+[2026-08-25T01:38:54.281Z] + read -r base
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Update Jenkins Metadata)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Trigger CD Job)
+[Pipeline] build
+[2026-08-25T01:38:54.533Z] Scheduling project: pm_planner_03.검증서버[QA] » pm-planner-qa-app-deploy
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+[2026-08-25T01:38:54.602Z] CI Pipeline Finished
+[Pipeline] script
+[Pipeline] {
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] cleanWs
+[2026-08-25T01:38:54.668Z] [WS-CLEANUP] Deleting project workspace...
+[2026-08-25T01:38:54.668Z] [WS-CLEANUP] Deferred wipeout is used...
+[2026-08-25T01:38:54.674Z] [WS-CLEANUP] done
+[Pipeline] echo
+[2026-08-25T01:38:54.693Z] [성공] CI Pipeline Succeeded : ptdeploylxw01:5001/iris/app/mendix-iris-qa:1.0.1-rc.10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
